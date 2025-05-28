@@ -37,8 +37,8 @@ Sistema completo de backend para fluxo de vendas com:
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/checkout-backend.git
-cd checkout-backend
+git clone https://github.com/FelipeLopes069/checkout-back-end.git
+cd checkout-back-end
 
 # Com Yarn
 yarn install
