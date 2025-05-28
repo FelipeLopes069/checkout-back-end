@@ -15,9 +15,20 @@ connectDB();
 
 const app = express();
 
-// ✅ Libera o frontend (ex: localhost:3000) pra acessar a API
+// ✅ CORS: libera frontend local e da Vercel
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://checkout-front-end-1k64.vercel.app"
+];
+
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
@@ -27,6 +38,7 @@ app.use(express.json());
 // ✅ Serve arquivos estáticos da pasta /uploads (acesso às imagens)
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// rota de teste
 app.get('/', (req, res) => {
   res.send('🚀 API do Checkout funcionando');
 });
@@ -37,5 +49,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/webhook', webhookRoutes);
 
+// inicia o servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🟢 Servidor rodando na porta ${PORT}`));
