@@ -19,7 +19,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "https://checkout-front-end-rust.vercel.app"
-];c
+];
 
 app.use(cors({
   origin: function (origin, callback) {
