@@ -18,8 +18,8 @@ const app = express();
 // ✅ CORS: libera frontend local e da Vercel
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://checkout-front-end-rust.vercel.app"
-];
+  "https://checkout-front-end-rust.vercel.app"
+];c
 
 app.use(cors({
   origin: function (origin, callback) {
